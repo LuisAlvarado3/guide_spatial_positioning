@@ -1,0 +1,303 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Sistema de Referencia                 - Modelo de posicionamiento espacial</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././src/css/style.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduccion.html"><strong aria-hidden="true">1.</strong> Introducción                             </a></li><li class="chapter-item expanded "><a href="../cap1/0_cap1.html"><strong aria-hidden="true">2.</strong> Capitulo 1                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap1/1_sis_ref.html" class="active"><strong aria-hidden="true">2.1.</strong> Sistema de Referencia                </a></li><li class="chapter-item expanded "><a href="../cap1/2_prim_s_ref.html"><strong aria-hidden="true">2.2.</strong> Primitivas de sistemas de referencia </a></li><li class="chapter-item expanded "><a href="../cap1/3_conv_sis_ref.html"><strong aria-hidden="true">2.3.</strong> Conversión de sistema de referencia  </a></li><li class="chapter-item expanded "><a href="../cap1/4_algoritmo.html"><strong aria-hidden="true">2.4.</strong> Algoritmo                            </a></li><li class="chapter-item expanded "><a href="../cap1/5_python.html"><strong aria-hidden="true">2.5.</strong> Implementación en Python             </a></li></ol></li><li class="chapter-item expanded "><a href="../cap2/0_cap2.html"><strong aria-hidden="true">3.</strong> Capítulo 2                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap2/1_traslacion.html"><strong aria-hidden="true">3.1.</strong> Traslación                           </a></li></ol></li><li class="chapter-item expanded "><a href="../cap3/0_cap3.html"><strong aria-hidden="true">4.</strong> Capítulo 3                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap3/1_rotacion.html"><strong aria-hidden="true">4.1.</strong> Rotación                             </a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Modelo de posicionamiento espacial</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="sistema-de-referencia"><a class="header" href="#sistema-de-referencia">Sistema de Referencia.</a></h1>
+<p>Un sistema de referencia es como su nombre lo dice, es un sistema con el que obtenemos una visión ideal espacial para representar nuestro entorno o parte de ella. La finalidad es identificar elementos en ese espacio numéricamente obteniendo información de ella como lo es la posición, el tiempo, la velocidad, etc.</p>
+<p>Algunos de los sistemas de referencia se podrían clasificar según el tipo de ejes, tal como:</p>
+<p>Unidimensional (\(\mathbb{R}^1\)):</p>
+<ul>
+<li>Recta numérica.</li>
+</ul>
+<p>Bidimensional (\(\mathbb{R}^2\)):</p>
+<ul>
+<li>Coordenadas Cartesianas.</li>
+<li>Coordenadas Polares.</li>
+</ul>
+<p>Tridimensional (\(\mathbb{R}^3\)):</p>
+<ul>
+<li>Coordenadas Cartesianas.</li>
+<li>Coordenadas Cilíndricas.</li>
+<li>Coordenadas Esféricas.</li>
+</ul>
+<blockquote>
+<p>Nota: Utilizo el símbolo \(\mathbb{R}\) donde su exponenete representa el número de dimensiones que tiene el sistema. Así, si un sistema tiene dos dimensiones utilizaré \(\mathbb{R}^2\), un sistema de tres dimensiones es \(\mathbb{R}^3\).
+O dicho de otra forma, sea un sistema de \(n\) dimensiones representado por un espacio de números reales (\(\mathbb{R}\)), entonces el sistema \(n-dimensional\) está dado por la expresión:
+$$
+\mathbb{R}^n
+$$</p>
+</blockquote>
+<h2 id="sistema-unidimensional"><a class="header" href="#sistema-unidimensional">Sistema Unidimensional...</a></h2>
+<h3 id="recta-numérica"><a class="header" href="#recta-numérica">Recta numérica...</a></h3>
+<h2 id="sistema-bidimensional"><a class="header" href="#sistema-bidimensional">Sistema Bidimensional.</a></h2>
+<h3 id="coordenadas-cartesianas-en-dos-dimensiones"><a class="header" href="#coordenadas-cartesianas-en-dos-dimensiones">Coordenadas Cartesianas en dos dimensiones.</a></h3>
+<p>También conocido como <strong>Sistema Cartesiano Rectangular</strong> o <strong>Sistema Coordenado Rectangular</strong> es sugerido como un plano que consta de dos rectas numéricas que, perpendicularmente se intersecan, por ende comparten un punto al que se le denomina origen y se representa por \(O\). El valor del origen en cada recta es de \(0\) ya que es el punto de referencia para representar la posición de algo.</p>
+<blockquote>
+<p>Nota: <a href="https://dle.rae.es/intersecar">Intersecar</a> es un término que se utiliza para indicar que dos líneas, superficies o sólidos se cortan, o se dice que se cruzan.</p>
+</blockquote>
+<p>Como ya se ha mencionado, el <strong>Sistema Cartesiano Rectangular</strong> se conforma por dos rectas; la primér recta, o recta horizontal, también denominada como eje \(X\), se enumera en rango positivo desde el origen \(O\) hacia la derecha y se enumera en rango negativo desde \(O\) hacia la izquierda; la segunda recta es una recta vertical y es conocida como eje \(Y\), su rango positivo se encuentra desde el origen \(O\) hacia arriba, y el rango negativo desde el \(O\) hacia abajo.</p>
+<p>Entonces un plano bidimensional (cartesiano), es un sistema coordenado asociado por los dos ejes y es expresado como \(OXY\).</p>
+<p>Definición: <em>Sea un <em><strong>plano bidimensional</strong></em> \(\mathbb{R}^2\) conocido como el conjunto de parejas ordenadas de números reales</em>, como:
+$$
+\mathbb{R}^2 = \{ (X, Y) | X, Y \in \mathbb{R} \}
+$$</p>
+<blockquote>
+<p>Nota: <br>
+Corchetes &quot;\(\{\}\)&quot;: o también conocido como llaves (\(\{\}\)) se utilizan para indicar que se trata de un conjunto de algo. Todos los elementos que pertenecen al conjunto se encierran entre las llaves, por ejemplo, el conjunto de números del \(0\) al \(10\) puede ser expresado como: 
+$$\{ 0,1,2,3,...,9,10 \} $$
+y se lee como (el conjunto del 0 al 10, por ejemplo).<br><br>
+Expresión &quot;\(|\)&quot;: Utilizada en conjuntos, denominada <em>notación constructora de conjuntos</em> sirve para denotar una condición bajo la cual se está dando un dominio en los elementos. Tambien es equivalente a &quot;\(:\)&quot;, y siempre (o en este caso) se utiliza colocando los elementos seguida de la expresión \(|\) y despues la condicionante, por ejemplo el conjunto de todos los valores para \(x\) en los que su dominio es positivo y mayor a cero podría ser:
+$$
+\{ x | x&gt;0 \}
+$$
+y se lee como (el conjunto de x tal que x mayor a 0)<br><br>
+Expresión &quot;\(\in\)&quot;: Utilizada en expresiones con parámetros de pertenencia, conocida como <em>membresia de conjuntos de pertenencia</em> se utiliza para indicar que cierto elemento pertenece a determinada cosa. Por ejemplo, podemos decir que 7 pertenece a los números natuarales \(\mathbb{N}\), en tal caso se representa de la siguiente forma:
+$$
+7 \in \mathbb{N}
+$$
+y se lee como, (siete pertenece a los números naturales).</p>
+</blockquote>
+<h3 id="coordenadas-polares"><a class="header" href="#coordenadas-polares">Coordenadas Polares</a></h3>
+<p>En un plano \(\mathbb{R}^2\) representado por un sistema polar se centra principalmente en la localización de objetos utilizando pares coordenados de magnitud y dirección, mediante un segmento y un ángulo; donde el segmento es conocido como <strong>radio polar</strong> y al ángulo como <strong>ángulo polar</strong>.</p>
+<blockquote>
+<p>Nota: El radio polar también es conocido como <strong>radio vector</strong> y el angulo polar se le suele decir tambien como <strong>ángulo argumento</strong>, Sin embargo queda mejor descrito que la posición en un sistema polar se defina al nombre coordenado implícitamente.</p>
+</blockquote>
+<p>El plano polar queda descrito por un origen denominado Polo (\(O\)) y tambien se caracteriza por poder representarse mediante un eje horizontal \(X\)  y uno vertical  \(Y\), sin embargo la forma de representarse es con un eje:
+$$
+X=\{x | x \in \mathbb{R}\}
+$$
+y un semieje angular \(O\Theta\), donde \(\Theta\) es el eje angular:
+$$
+\Theta=\{ \theta | \theta \in \mathbb{R}\sphericalangle \}
+$$</p>
+<p>Entonces el plano bidimensional (polar), es un sistema coordenado asociado por los dos ejes y es expresados como \(OX\Theta\).</p>
+<p>Definición: <em>Sea un <strong>plano bidimensional</strong> \(\mathbb{R}^2\) conocido como el conjunto de parejas ordenadas por números reales, y una representación angular</em>, como:
+$$
+\mathbb{R}^2=\{ (X, \Theta) | X,\Theta \in \mathbb{R}, \Theta \in \sphericalangle \}
+$$</p>
+<blockquote>
+<p>Nota: <br>
+Letra \(\theta\) y \(\Theta\):  Es una letra del alfabeto griego y se lee como (theta), en particular utilizaré esta letra como una representación simbólica de un número angular.<br><br>
+Simbolo \(\sphericalangle\): No he profundizado en su utilización, sin embargo, por el momento lo utilizaré para identificar que se trata de un conjunto de números angulares.</p>
+</blockquote>
+<h2 id="sistema-tridimensional"><a class="header" href="#sistema-tridimensional">Sistema Tridimensional.</a></h2>
+<h3 id="coordenadas-cartesianas-tridimensionales"><a class="header" href="#coordenadas-cartesianas-tridimensionales">Coordenadas Cartesianas Tridimensionales.</a></h3>
+<p>El sistema cartesiano tridimensional, cuenta con tres rectas perpendiculares entre si, denominados ejes \(X\), \(Y\) y \(Z\) además de un origen \(O\) generado por intersecarse los tres ejes. Por lo tanto, el sistema cartesiano se representa como \(OXYZ\).</p>
+<p>Sea <strong>un plano tridimensional</strong> \(\mathbb{R}^3\) conocido como una terna ordenada de números reales, como:
+$$
+\mathbb{R}^3 = \{(X,Y,Z) | X, Y, Z \in \mathbb{R} \}
+$$</p>
+<h3 id="coordenadas-cilíndricas"><a class="header" href="#coordenadas-cilíndricas">Coordenadas Cilíndricas...()</a></h3>
+<p>Sean \((r, \theta)\) las coordenadas polares en el plano \(\Pi\) determinadas por el polo \(O\) y el eje polar \(OA\).</p>
+<p>Para cada punto \(M \in \mathbb{R}^3 \ OZ\) sea \(M'\) la proyección de \(M\) sobre el plano \(\Pi\). Entonces, las <em>coordenadas cilíndricas</em> del punto \(M\) son la terna ordenada \((r, \theta, z)\) donde \((r, \theta)\) son las coordenadas polares del punto \(M'\) en el plano \(\Pi\) y \(z\) es la longitud del segmento orientado \(MM'\). Por definición,</p>
+<h3 id="coordenadas-esféricas"><a class="header" href="#coordenadas-esféricas">Coordenadas Esféricas...()</a></h3>
+<p>Sea \(O\) un punto en el espacio \(\mathbb{R}^3\) y fijamos una recta orientada \(OZ\) que pasa por \(O\) y un semiplano \(\alpha\) pasando por \(OZ\). Además tomemos el plano \(\pi\) que pasa por \(O\) y ortogonal al rayo \(OZ\). Para cada punto \(M\) que pertenece a la recta \(OZ\), sea \(M'\) la proyección de \(M\) sobre el plano \(\Pi\). Entonces el punto \(M\) tiene por <em>coordenadas esféricas</em> la terna \((\rho, \phi, \theta)\) donde \(\rho = |OM|\), \(\phi\) es el ángulo entre la dirección positiva \(OZ\) y el vector \(OM (0 &lt; \phi &lt; \pi)\), y \(\theta\) es el ángulo polar de \(M'\) en el plano \(\Pi\), donde \(0 &lt; \theta &lt; 2\pi\).</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../cap1/0_cap1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../cap1/2_prim_s_ref.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../cap1/0_cap1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../cap1/2_prim_s_ref.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
