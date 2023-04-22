@@ -1,1 +1,0 @@
-# Implementación en Python             

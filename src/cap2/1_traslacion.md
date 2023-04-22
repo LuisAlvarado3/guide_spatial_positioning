@@ -1,1 +1,0 @@
-# Traslación                         
