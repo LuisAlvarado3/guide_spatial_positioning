@@ -406,8 +406,83 @@ z = \rho \cos{\phi}
 }
 $$</p>
 <h3 id="coordenadas-cilíndricas-esféricas"><a class="header" href="#coordenadas-cilíndricas-esféricas">Coordenadas Cilíndricas-Esféricas.</a></h3>
+<p>El sistema de <strong>coordenadas cilíndricas</strong> es un vector \(\vec{r}\) cuyas componenetes son \((r, \theta, z)\) y las <strong>coordenadas esféricas</strong> cuyo punto \(p_{esférica}\) descrita por las componentes \((\rho, \phi, \theta)\) comparten el ángulo de similitud \(\theta\) partiendo del sistema <strong>cartesiano</strong> expresado por:
+$$
+z = \rho \cos{\phi}
+$$
+si, 
+$$
+r = \sqrt{ x^2 + y^2 }
+$$
+y
+$$
+\rho = \sqrt{ x^2 + y^2 + z^2}
+$$
+Entonces despejando ambas ecuaciones,
+$$
+\rho^2 - z^2 = x^2 + y^2\\
+\Rightarrow \rho^2 - z^2 = r^2\\
+\Rightarrow r = \sqrt{ \rho^2 - z^2 }\\
+\therefore  r = \sqrt{ \rho^2 - ( \rho \cos{\phi} )^2 } 
+$$
+Por consiguiente las <strong>cordenadas cilíndricas</strong> quedan expresadas en términos de <strong>coordenadas esféricas</strong> de la siguiente forma:
+$$
+\vec{r} = \cases{
+r = \sqrt{ \rho^2 - ( \rho \cos{\phi} )^2 }\\
+\theta = \theta\\
+z = \rho \cos{\phi}
+}
+$$</p>
+<p>Las <strong>coordenadas esféricas</strong> quedan expresadas en términos de <strong>coordenadas cilíndricas</strong>,
+$$
+p_{esférica} = \cases{
+\rho = \sqrt{ r^2 + z^2 } \\
+\phi = \cos(\frac{\sqrt{ r^2 + z^2 }}{z}) \\
+\theta = \theta
+}
+$$</p>
 <h2 id="sistemas-mixtos"><a class="header" href="#sistemas-mixtos">Sistemas Mixtos.</a></h2>
+<p>Como mencioné al principio de este capítulo, traspasar un sistema \(\mathbb{R}^3\) a uno de \(\mathbb{R}^2\) puede no ser conveniente debido a la pérdida de información que este conlleva, sin embargo es posible descomponer un sistema de tres diemensiones en sistemas más simples. Está sección tiene el propósito de explicar como hacer esta conversión de sistemas.</p>
 <h3 id="sistemas-de-mathbbr2-a-mathbbr3"><a class="header" href="#sistemas-de-mathbbr2-a-mathbbr3">Sistemas de \(\mathbb{R}^2\) a \(\mathbb{R}^3\).</a></h3>
+<h4 id="cartesiano-mathbbr2---mathbbr3"><a class="header" href="#cartesiano-mathbbr2---mathbbr3">Cartesiano \(\mathbb{R}^2\) - \(\mathbb{R}^3\)</a></h4>
+<p>Suponga un punto \(p_{2}(x,y)\) donde para cada punto se tiene,
+$$
+x = a\\
+y = b\\
+$$
+sean \(a\) y \(b\) cualquier valor perteneciente a los \(\mathbb{R}\).</p>
+<p>Para un sistema de 3 dimensiones consideraremos que \(z\) se inicializa en el origen es decir, \(0\).
+$$
+p_{3} = \cases{
+x = a\\
+y = b\\
+z = 0
+}
+$$</p>
+<h4 id="cartesiano-mathbbr2---cilíndrico"><a class="header" href="#cartesiano-mathbbr2---cilíndrico">Cartesiano \(\mathbb{R}^2\) - Cilíndrico.</a></h4>
+<p>Considerese un punto \(p_2\) descrito por \((x,y)\) representado en coordenadas cilíndricas por el vector \( \vec{r}(r, \theta, z) \):
+$$
+\vec{r} = \cases{
+r = \sqrt{x^2 + y^2}\\
+\theta = \cos{(\frac{ \sqrt{x^2+y^2} }{x})}\\
+z = 0
+}
+$$</p>
+<h4 id="cartesiano-mathbbr2---esférico"><a class="header" href="#cartesiano-mathbbr2---esférico">Cartesiano \(\mathbb{R}^2\) - Esférico.</a></h4>
+<p>Sea \(p_2(x,y)\) en términos esféricos de \( p_{esférica}(\rho, \phi, \theta)\), de acuerdo al caso cartesiano en que \(z=0\), obtenemos lo siguiente:
+$$
+\rho = \sqrt{ x^2 + y^2 + (0)^2}\\
+\phi = \cos{ (\frac{\sqrt{ x^2 + y^2 + (0)^2}}{(0)}) }\\
+\theta = \cos{( \frac{\sqrt{ x^2 + y^2 + (0)^2} * \sin{ (\cos{ (\frac{\sqrt{ x^2 + y^2 + (0)^2}}{(0)}) }) }}{x} )}
+$$
+Simplificando,
+$$
+\rho = \sqrt{ x^2 + y^2}\\
+\phi = \cos{ (\frac{\sqrt{ x^2 + y^2 }}{(0)}) }\\
+\theta = \cos{( 
+\frac{ \sqrt{ x^2 + y^2} }{x} 
+)}
+$$</p>
 <h3 id="sistemas-de-mathbbr3-a-mathbbr2-sin-sufrir-pérdidas-de-información"><a class="header" href="#sistemas-de-mathbbr3-a-mathbbr2-sin-sufrir-pérdidas-de-información">Sistemas de \(\mathbb{R}^3\) a \(\mathbb{R}^2\) sin sufrir pérdidas de información.</a></h3>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="algoritmo"><a class="header" href="#algoritmo">Algoritmo</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="implementación-en-python"><a class="header" href="#implementación-en-python">Implementación en Python</a></h1>
