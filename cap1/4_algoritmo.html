@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduccion.html"><strong aria-hidden="true">1.</strong> Introducción                             </a></li><li class="chapter-item expanded "><a href="../cap1/0_cap1.html"><strong aria-hidden="true">2.</strong> Capitulo 1                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap1/1_sis_ref.html"><strong aria-hidden="true">2.1.</strong> Sistema de Referencia                </a></li><li class="chapter-item expanded "><a href="../cap1/2_prim_s_ref.html"><strong aria-hidden="true">2.2.</strong> Primitivas de sistemas de referencia </a></li><li class="chapter-item expanded "><a href="../cap1/3_conv_sis_ref.html"><strong aria-hidden="true">2.3.</strong> Conversión de sistema de referencia  </a></li><li class="chapter-item expanded "><a href="../cap1/4_algoritmo.html" class="active"><strong aria-hidden="true">2.4.</strong> Algoritmo                            </a></li><li class="chapter-item expanded "><a href="../cap1/5_python.html"><strong aria-hidden="true">2.5.</strong> Implementación en Python             </a></li></ol></li><li class="chapter-item expanded "><a href="../cap2/0_cap2.html"><strong aria-hidden="true">3.</strong> Capítulo 2                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap2/1_traslacion.html"><strong aria-hidden="true">3.1.</strong> Traslación                           </a></li></ol></li><li class="chapter-item expanded "><a href="../cap3/0_cap3.html"><strong aria-hidden="true">4.</strong> Capítulo 3                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap3/1_rotacion.html"><strong aria-hidden="true">4.1.</strong> Rotación                             </a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduccion.html"><strong aria-hidden="true">1.</strong> Introducción                             </a></li><li class="chapter-item expanded "><a href="../cap1/0_cap1.html"><strong aria-hidden="true">2.</strong> Capitulo 1                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap1/1_sis_ref.html"><strong aria-hidden="true">2.1.</strong> Sistema de Referencia                </a></li><li class="chapter-item expanded "><a href="../cap1/2_prim_s_ref.html"><strong aria-hidden="true">2.2.</strong> Primitivas de sistemas de referencia </a></li><li class="chapter-item expanded "><a href="../cap1/3_conv_sis_ref.html"><strong aria-hidden="true">2.3.</strong> Conversión de sistema de referencia  </a></li><li class="chapter-item expanded "><a href="../cap1/4_algoritmo.html" class="active"><strong aria-hidden="true">2.4.</strong> Algoritmo                            </a></li><li class="chapter-item expanded "><a href="../cap1/5_python.html"><strong aria-hidden="true">2.5.</strong> Implementación en Python             </a></li><li class="chapter-item expanded "><a href="../cap1/6_js.html"><strong aria-hidden="true">2.6.</strong> Implementación en JavaScript         </a></li></ol></li><li class="chapter-item expanded "><a href="../cap2/0_cap2.html"><strong aria-hidden="true">3.</strong> Capítulo 2                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap2/1_traslacion.html"><strong aria-hidden="true">3.1.</strong> Traslación                           </a></li></ol></li><li class="chapter-item expanded "><a href="../cap3/0_cap3.html"><strong aria-hidden="true">4.</strong> Capítulo 3                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap3/1_rotacion.html"><strong aria-hidden="true">4.1.</strong> Rotación                             </a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -145,6 +145,156 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="algoritmo"><a class="header" href="#algoritmo">Algoritmo</a></h1>
+<p>En esta sección se describirá mediante una serie de algoritmos como podemos implementar los sistemas de conversiones de coordenadas espaciales. Primero aplicaremos un algoritmo para el <strong>dominio del ángulo a través de la función tangente</strong> que repasamos en la sección anteriór. El formato de los algorítmos será en pseudocódigo </p>
+<h2 id="cálculo-del-ángulo-mediante-la-función-tangente"><a class="header" href="#cálculo-del-ángulo-mediante-la-función-tangente">Cálculo del ángulo mediante la función tangente.</a></h2>
+<pre><code class="language-S">FROM mathematical MODULE IMPORT FUNCTION atan;
+
+START_FUNCTION getAngle( opposite, adjacent ) -&gt; FLOAT:
+    FLOAT opposite &lt;- opposite;
+    FLOAT adjacent &lt;- adjacent;
+    FLOAT angle    &lt;-      0.0;
+    IF adjacent == 0.0 THEN:
+        IF opposite != 0.0 THEN:
+            IF opposite &lt; 0.0 THEN:
+                angle &lt;- 270.0;
+            ELSE:
+                angle &lt;- 90.0;
+            END_IF
+        END_IF
+    ELSE:
+        angle &lt;- atan( opposite / adjacent );
+        IF opposite &lt; 0.0 THEN:
+            IF adjacent &lt; 0.0 THEN:
+                angle &lt;- 270.0 - angle;
+            ELSE:
+                angle &lt;- 360.0 + angle;
+            END_IF
+        ELSE:
+            IF adjacent &lt; 0.0 THEN:
+                angle &lt;- 180.0 + angle;
+            ELSE:
+                angle &lt;- angle;
+            END_IF
+        END_IF
+    END_IF
+
+    RETURN angle;
+END_FUNCTION
+</code></pre>
+<h2 id="coordenadas-cartesianas-cilíndricas"><a class="header" href="#coordenadas-cartesianas-cilíndricas">Coordenadas Cartesianas-Cilíndricas.</a></h2>
+<pre><code class="language-S">IMPORT FUNCTION getAngle;
+
+START_FUNCTION cartesian3dToCylindrical( x, y, z ) -&gt; DICTIONARY:
+    FLOAT x &lt;- x;  
+    FLOAT y &lt;- y;
+    FLOAT z &lt;- z;
+
+    FLOAT radio &lt;- ( x^2 + y^2 )^(1/2);
+    FLOAT theta &lt;- getAngle( y, x );
+    RETURN START_DICTIONARY:
+        &quot;radio&quot; &lt;- radio;
+        &quot;theta&quot; &lt;- theta; 
+        &quot;z&quot;     &lt;-     z;
+    END_DICTIONARY
+END_FUNCTION
+</code></pre>
+<h2 id="coordenadas-cartesianas-esféricas"><a class="header" href="#coordenadas-cartesianas-esféricas">Coordenadas Cartesianas-Esféricas.</a></h2>
+<pre><code class="language-S">IMPORT FUNCTION                 getAngle;
+IMPORT FUNCTION cartesian3dToCylindrical;
+
+START_FUNCTION cartesian3dToSpherical( x, y, z ) -&gt; DICTIONARY:
+    DICTIONARY cylindrical &lt;- cartesian3dToCylindrical( x, y, z );
+    FLOAT      rho         &lt;-         ( x^2 + y^2 + z^2 )^( 1/2 );
+    FLOAT      phi         &lt;- getAngle( cylindrical[&quot;radio&quot;], z );
+    FLOAT      theta       &lt;-                cylindrical[&quot;theta&quot;];
+
+    RETURN START_DICTIONARY:
+        &quot;rho&quot;   &lt;-   rho;
+        &quot;theta&quot; &lt;- tehta;
+        &quot;phi&quot;   &lt;-   phi;
+    END_DICTIONARY
+END_FUNCTION
+</code></pre>
+<h2 id="coordenadas-cilíndricas-cartesianas"><a class="header" href="#coordenadas-cilíndricas-cartesianas">Coordenadas Cilíndricas-Cartesianas</a></h2>
+<pre><code class="language-S">FROM mathematical MODULE IMPORT FUNCTIONS cos, sin;
+
+START_FUNCTION cylindricalToCartesian3d( radio, theta, z ) -&gt; DICTIONARY:
+    FLOAT radio &lt;- radio;
+    FLOAT theta &lt;- theta;
+    FLOAT z     &lt;-     z;
+
+    FLOAT x &lt;- radio * cos( theta );
+    FLOAT y &lt;- radio * sin( theta );
+
+    RETURN START_DICTIONARY:
+        &quot;x&quot; &lt;- x;
+        &quot;y&quot; &lt;- y;
+        &quot;z&quot; &lt;- z;
+    END_DICTIONARY
+END_FUNCTION
+</code></pre>
+<h2 id="coordenadas-cilíndricas-esféricas"><a class="header" href="#coordenadas-cilíndricas-esféricas">Coordenadas Cilíndricas-Esféricas</a></h2>
+<pre><code class="language-S">IMPORT FUNCTION cylindricalToSpherical3d;
+IMPORT FUNCTION   cartesian3dToSpherical;
+
+START_FUNCTION cylindricalToSpherical( radio, theta, z ) -&gt; DICTIONARY:
+    FLOAT radio &lt;- radio; 
+    FLOAT theta &lt;- theta;
+    FLOAT z     &lt;-     z;
+
+    DICTIONARY cartesian &lt;- cylindricalToCartesian3d( radio, theta, z );
+    DICTIONARY spherical &lt;- cartesian3dToSphaerical ( cartesian[&quot;x&quot;], cartesian[&quot;y&quot;], cartesian[&quot;z&quot;] );
+
+    RETURN START_DICTIONARY:
+        &quot;rho&quot;   &lt;- spherical[&quot;rho&quot;  ];
+        &quot;theta&quot; &lt;- spherical[&quot;theta&quot;];
+        &quot;phi&quot;   &lt;- spherical[&quot;phi&quot;  ];
+    END_DICTIONARY
+END_FUNCTION
+
+</code></pre>
+<h2 id="coordenadas-esfpericas-cilíndricas"><a class="header" href="#coordenadas-esfpericas-cilíndricas">Coordenadas Esfpericas-Cilíndricas</a></h2>
+<pre><code class="language-S">FROM mathematical MODULE IMPORT FUNCTIONS cos, sin;
+
+START_FUNCION sphericalToCylindrical( rho, theta, phi ) -&gt; DICTIONARY:
+    FLOAT rho   &lt;-   rho;
+    FLOAT theta &lt;- theta;
+    FLOAT phi   &lt;-   phi;
+
+    IF rho &lt; 0.0 THEN:
+        rho &lt;- rho * (-1);
+    END_IF
+
+    FLOAT radio &lt;- 0.0;
+    FLOAT     z &lt;- 0.0;
+
+    IF rho != 0 THEN:
+        z     &lt;- rho * cos( phi );
+        radio &lt;- rho * sin( phi );
+    END_IF
+
+    RETURN START_DICTIONARY:
+        &quot;radio&quot; &lt;- radio;
+        &quot;theta&quot; &lt;- theta;
+        &quot;z&quot;     &lt;-     z;
+    END_DICTIONARY
+END_FUNCTION
+</code></pre>
+<h2 id="coordenadas-esféricas-cartesianas"><a class="header" href="#coordenadas-esféricas-cartesianas">Coordenadas Esféricas-Cartesianas</a></h2>
+<pre><code class="language-S">IMPORT FUNCTION  sphaericalToCylindrical;
+IMPORT FUNCTION cylindricalToCartesian3d;
+
+START_FUNCTION sphericalToCartesian3d( rho, theta, phi ) -&gt; DICTIONARY:
+    DICTIONARY cylindrical &lt;- sphericalToCylindrical( rho, theta, phi );
+    DICTIONARY cartesian   &lt;- cylindricalToCartesian3d( cylindrical[&quot;radio&quot;], cylindrical[&quot;theta&quot;], cylindrical[&quot;z&quot;] );
+
+    RETURN START_DICTIONARY:
+        &quot;x&quot; &lt;- cartesian[&quot;x&quot;];
+        &quot;y&quot; &lt;- cartesian[&quot;y&quot;];
+        &quot;z&quot; &lt;- cartesian[&quot;z&quot;];
+    END_DICTIONARY
+END_FUNCTION
+</code></pre>
 
                     </main>
 

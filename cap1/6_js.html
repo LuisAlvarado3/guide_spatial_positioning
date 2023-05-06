@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Implementación en Python              - Modelo de posicionamiento espacial</title>
+        <title>Implementación en JavaScript          - Modelo de posicionamiento espacial</title>
 
 
         <!-- Custom HTML head -->
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduccion.html"><strong aria-hidden="true">1.</strong> Introducción                             </a></li><li class="chapter-item expanded "><a href="../cap1/0_cap1.html"><strong aria-hidden="true">2.</strong> Capitulo 1                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap1/1_sis_ref.html"><strong aria-hidden="true">2.1.</strong> Sistema de Referencia                </a></li><li class="chapter-item expanded "><a href="../cap1/2_prim_s_ref.html"><strong aria-hidden="true">2.2.</strong> Primitivas de sistemas de referencia </a></li><li class="chapter-item expanded "><a href="../cap1/3_conv_sis_ref.html"><strong aria-hidden="true">2.3.</strong> Conversión de sistema de referencia  </a></li><li class="chapter-item expanded "><a href="../cap1/4_algoritmo.html"><strong aria-hidden="true">2.4.</strong> Algoritmo                            </a></li><li class="chapter-item expanded "><a href="../cap1/5_python.html" class="active"><strong aria-hidden="true">2.5.</strong> Implementación en Python             </a></li><li class="chapter-item expanded "><a href="../cap1/6_js.html"><strong aria-hidden="true">2.6.</strong> Implementación en JavaScript         </a></li></ol></li><li class="chapter-item expanded "><a href="../cap2/0_cap2.html"><strong aria-hidden="true">3.</strong> Capítulo 2                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap2/1_traslacion.html"><strong aria-hidden="true">3.1.</strong> Traslación                           </a></li></ol></li><li class="chapter-item expanded "><a href="../cap3/0_cap3.html"><strong aria-hidden="true">4.</strong> Capítulo 3                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap3/1_rotacion.html"><strong aria-hidden="true">4.1.</strong> Rotación                             </a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduccion.html"><strong aria-hidden="true">1.</strong> Introducción                             </a></li><li class="chapter-item expanded "><a href="../cap1/0_cap1.html"><strong aria-hidden="true">2.</strong> Capitulo 1                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap1/1_sis_ref.html"><strong aria-hidden="true">2.1.</strong> Sistema de Referencia                </a></li><li class="chapter-item expanded "><a href="../cap1/2_prim_s_ref.html"><strong aria-hidden="true">2.2.</strong> Primitivas de sistemas de referencia </a></li><li class="chapter-item expanded "><a href="../cap1/3_conv_sis_ref.html"><strong aria-hidden="true">2.3.</strong> Conversión de sistema de referencia  </a></li><li class="chapter-item expanded "><a href="../cap1/4_algoritmo.html"><strong aria-hidden="true">2.4.</strong> Algoritmo                            </a></li><li class="chapter-item expanded "><a href="../cap1/5_python.html"><strong aria-hidden="true">2.5.</strong> Implementación en Python             </a></li><li class="chapter-item expanded "><a href="../cap1/6_js.html" class="active"><strong aria-hidden="true">2.6.</strong> Implementación en JavaScript         </a></li></ol></li><li class="chapter-item expanded "><a href="../cap2/0_cap2.html"><strong aria-hidden="true">3.</strong> Capítulo 2                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap2/1_traslacion.html"><strong aria-hidden="true">3.1.</strong> Traslación                           </a></li></ol></li><li class="chapter-item expanded "><a href="../cap3/0_cap3.html"><strong aria-hidden="true">4.</strong> Capítulo 3                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap3/1_rotacion.html"><strong aria-hidden="true">4.1.</strong> Rotación                             </a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -144,145 +144,151 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="implementación-en-python"><a class="header" href="#implementación-en-python">Implementación en Python</a></h1>
-<p>Para la implentación en <code>python</code> y siguiendo el procedimiento en el pseudocódigo se aplican de la siguiente forma:</p>
-<p>Se crea una carpeta de preferencia con el nombre asociado a su proyecto que mejor le parezca y dentro se crea un archivo <code>spatial.py</code> que almacenará los módulos de conversión de coordenadas espaciales.</p>
-<pre><code>project/
-├── file_1
-├── file_2
-├── ...
-├── file_n
-└── space_modules/
-    └── spatial.py
+                        <h1 id="implementación-en-javascript"><a class="header" href="#implementación-en-javascript">Implementación en JavaScript</a></h1>
+<p>Para la implementación en <code>JavaScript</code> de acuerdo al Pseudocódigo se estructurará en un proyecto con las cualidades con las que se adapta al diseño de un sitio web, por lo que el aŕbol de archivos principal del proyecto es el del proyecto al cual podemos denominar <code>website</code>, dentro de ella puede existir el archivo <code>index.html</code> en la carpeta principal, subcarpetas para estilos <code>/css</code> y finalmente donde se albergará nuestro archivo <code>spatial.js</code> con los módulos, la carpeta <code>/js</code>, esta estructura de proyecto es solo una sugerencia, aunque usted puede implementarla como se le de la gana,</p>
+<pre><code>website/
+├── index.html
+├── css/
+├   └── style.css
+└── js/
+    ├── main.js
+    └── spatial.js
 </code></pre>
-<p>importe de la librería <code>math</code> los módulos <code>sin</code>, <code>cos</code>, <code>radians</code>, <code>degrees</code>, <code>atan</code></p>
-<pre><code class="language-python">from math import sin. cos, atan, radians, degrees, radians
-</code></pre>
-<blockquote>
-<p>Nota: las funciones trigonométricas que implementa python <strong>reciben solo argumentos en radianes</strong> por lo que cuando se calcula el ángulo devuelve el ángulo en radianes, por ese motivo se importa la función <code>degrees( radians )</code> que recibe un argumento en radianes y lo transforma en un ángulo angular.</p>
-</blockquote>
-<h2 id="módulo-dominio-del-ángulo-a-través-de-la-función-tangente"><a class="header" href="#módulo-dominio-del-ángulo-a-través-de-la-función-tangente">Módulo <strong>Dominio del ángulo a través de la función tangente</strong></a></h2>
-<p>Se nombrará el módulo como <code>get_angle( apposite, adjacent )</code>, el cual recibe los argumentos <em>opuesto</em> y <em>adyacente</em> que retornará un valor flotante.</p>
-<pre><code class="language-python">def get_angle( opposite=float(), adjacent=float() ) -&gt; float:
-    angle = 0.0
+<h2 id="validación-de-números"><a class="header" href="#validación-de-números">Validación de números</a></h2>
+<p>La validación para convertir un valor a tipo flotante se debe principalmente a que pueden llegar solicitudes a las funciones con valores que no exactamente son valores numéricos, sino que llegan los valores como una cadena de texto que tiene que interpretar nuestro programa</p>
+<pre><code class="language-js">function validateNumbers(a,b,c){
+    a = parseFloat( a );
+    b = parseFloat( b );
+    c = parseFloat( c );
+    if( isNaN( a ) ){ a=0; }
+    if( isNaN( b ) ){ b=0; }
+    if( isNaN( c ) ){ c=0; }
 
-    if adjacent == 0:
-        if opposite != 0: angle = 270
-        else            : angle =  90
-    else: 
-        angle = degrees( atan( opposite / adjacent ) )
-        if opposite &lt; 0:
-            if   adjacent &lt; 0: angle = 270 - angle
-            else             : angle = 360 + angle
-        else:
-            if adjacent &lt; 0: angle = 180 + angle
-            else           : angle =       angle
-    return angle
+    return { a, b, c };
+}
 </code></pre>
-<h2 id="conversión-de-coordenadas-cartesianas-a-cilíndricas-y-esféricas"><a class="header" href="#conversión-de-coordenadas-cartesianas-a-cilíndricas-y-esféricas">Conversión de coordenadas Cartesianas a Cilíndricas y Esféricas</a></h2>
-<ul>
-<li>De Cartesianas Espaciales a Cilíndricas:</li>
-</ul>
-<pre><code class="language-python">def cartesian3d_to_cylindrical( x=float(), y=float(), z=float() ) -&gt; dict:
-    radio = ( x**2 + y**2 + z**2 )**(1/2);
-    theta = getAngle( y, x )
-
-    return {
-        &quot;radio&quot;:radio,
-        &quot;theta&quot;:theta,
-        &quot;z&quot;    : z
+<h2 id="conversión-de-radianes-a-grados-y-grados-a-radianes"><a class="header" href="#conversión-de-radianes-a-grados-y-grados-a-radianes">Conversión de Radianes a Grados y Grados a Radianes</a></h2>
+<p>Si bien ya no es necesario importar modulos para <code>sin</code> o <code>cos</code>, es necesario hacer las conversiones de radianes a grados y viceversa, principalmente porque no he encontrado un método nativo dentro de las funcionalidades de <code>JS</code>.</p>
+<pre><code class="language-js">function radiansToAngle( radians=0 ){
+    return radians * ( 180 / Math.PI );
+}
+</code></pre>
+<pre><code class="language-js">function angleToRadians( angle=0 ){
+    return angle * Math.PI / 180;
+}
+</code></pre>
+<h2 id="mófulo-dominio-del-ángulo-a-través-de-la-función-tangente"><a class="header" href="#mófulo-dominio-del-ángulo-a-través-de-la-función-tangente">Mófulo <strong>Dominio del ángulo a través de la función tangente</strong></a></h2>
+<pre><code class="language-js">function getAngle( opposite=0, adjacent=0 ){
+    let angle = 0;
+    if( adjacent == 0 ){
+        if( opposite != 0 ){
+            if( opposite &lt; 0 ){ angle = 270 }
+            else{ angle = 90; }
+        }
+    }else{
+        angle = radiansToAngle( Math.atan( opposite/adjacent ) );
+        if(opposite &lt; 0 ){
+            if( adjacent &lt; 0 ){ angle = 270 - angle;}
+            else{ angle = 360+angle; }
+        }else{
+            if( adjacent &lt; 0 ){ angle = 180 + angle;}
+            else{ angle = angle; }
+        }
     }
-</code></pre>
-<ul>
-<li>De Cartesianas Espaciales a Esféricas:</li>
-</ul>
-<pre><code class="language-python">def cartesian3d_to_spherical( x=float(), y=float(), z=float() ) -&gt; dict:
-    cylindrical = cartesian3d_to_cylindrical( x, y, z )
-    rho         =       ( x**2 + y**2 + z**2 )**(1/2)
-    phi         = get_angle( cylindrical[&quot;radio&quot;], z )
-    theta       =                cylindrical[&quot;theta&quot;]
 
-    return {
-        &quot;rho&quot;  :   rho,
-        &quot;theta&quot;: theta,
-        &quot;phi&quot;  :   phi,
-    }
+    return angle;
+}
 </code></pre>
-<h2 id="conversión-de-coordenadas-cilíndricas-a-cartesianas-y-esféricas"><a class="header" href="#conversión-de-coordenadas-cilíndricas-a-cartesianas-y-esféricas">Conversión de Coordenadas Cilíndricas a Cartesianas y Esféricas</a></h2>
-<ul>
-<li>De Cilíndricas a Cartesianas Espaciales:</li>
-</ul>
-<pre><code class="language-python">def cylindrical_to_cartesian3d( radio=float(), theta=float(), z=float() ) -&gt; dict:
-    theta_radians = radians( theta )
-    x = radio * cos( theta_radians )
-    y = radio * sin( theta_radians )
+<h2 id="conversión-de-coordenadas-cartesianas-a-cilíndricas-y-esféricas"><a class="header" href="#conversión-de-coordenadas-cartesianas-a-cilíndricas-y-esféricas">Conversión de Coordenadas Cartesianas a Cilíndricas y Esféricas</a></h2>
+<pre><code class="language-js">function cartesian3dToCylindrical( x=0, y=0, z=0 ){
+    let numbers = validateNumbers( x, y, z );
+    x = numbers.a; 
+    y = numbers.b; 
+    z = numbers.c;
 
-    return {
-        &quot;x&quot;: x,
-        &quot;y&quot;: y,
-        &quot;z&quot;: z,
-    }
+    let radio = ( x**2 + y**2 )**(1/2);
+    let theta = getAngle( y, x );
+    return { radio: radio, theta: theta, z: z };
+}
 </code></pre>
-<ul>
-<li>De Cilíndricas a Esféricas:</li>
-</ul>
-<pre><code class="language-python">def cylindrical_to_spherical( radio=float(), theta=float(), z=float() ) -&gt; dict:
-    cartesian = cylindrical_to_cartesian3d( radio, theta, z )
-    spherical = cartesian3d_to_spherical( 
-        cartesian[&quot;x&quot;], 
-        cartesian[&quot;y&quot;],
-        cartesian[&quot;z&quot;],
-    )
+<pre><code class="language-js">function cartesia3dToSpherical( x=0, y=0, z=0 ){
+    let cylindrical = cartesian3dToCylindrical(x, y, z );
+    let rho   = (x**2 + y**2 + z**2)**(1/2);
+    let phi   = getAngle( cylindrical.radio, z );
+    // console.log( &quot;phi&quot;+phi );
+    let theta = cylindrical.theta;
+    
+    return { rho, theta, phi };
+}
+</code></pre>
+<h2 id="coversión-de-coordenadas-cilíndricas-a-cartesianas-y-esféricas"><a class="header" href="#coversión-de-coordenadas-cilíndricas-a-cartesianas-y-esféricas">Coversión de Coordenadas Cilíndricas a Cartesianas y Esféricas</a></h2>
+<pre><code class="language-js">function cylindricalToCartesian3d( radio, theta, z ){
+    let numbers = validateNumbers( radio, theta, z );
+    radio = numbers.a;
+    theta = numbers.b;
+    z     = numbers.c;
 
-    return {
-        &quot;rho&quot;  : spherical[&quot;rho&quot;  ],
-        &quot;theta&quot;: spherical[&quot;theta&quot;],
-        &quot;phi&quot;  : spherical[&quot;phi&quot;  ],
+    let theta_rad = angleToRadians( theta ); 
+    let x = radio * Math.cos( theta_rad );
+    let y = radio * Math.sin( theta_rad );
+
+    return { x, y, z };
+}
+</code></pre>
+<pre><code class="language-js">function cylindricalToSpherical( radio, theta, z ){
+    let numbers = validateNumbers( radio, theta, z );
+    radio = numbers.a;
+    theta = numbers.b;
+    z     = numbers.c;
+    let cartesian = cylindricalToCartesian3d( radio, theta, z );
+    let spherical = cartesia3dToSpherical   ( cartesian.x, cartesian.y, cartesian.z );
+
+    return { 
+        rho  : spherical.rho  ,
+        theta: spherical.theta,
+        phi  : spherical.phi  ,
     }
+}
 </code></pre>
 <h2 id="conversión-de-coordenadas-esféricas-a-cartesianas-y-cilíndricas"><a class="header" href="#conversión-de-coordenadas-esféricas-a-cartesianas-y-cilíndricas">Conversión de Coordenadas Esféricas a Cartesianas y Cilíndricas</a></h2>
-<p>-De Esféricas a Cilíndricas:</p>
-<pre><code class="language-python">def spherical_to_cylindrical( rho=float(), theta=float(), phi=float() ) -&gt; dict:
-    if rho &lt; 0:
-        rho = rho * (-1)
-    radio = 0
-    z     = 0
+<pre><code class="language-js">function sphericalToCylindrical( rho=0, theta=0, phi=0 ){
+    let numbers = validateNumbers(rho, theta, phi);
+    rho   = numbers.a;
+    theta = numbers.b;
+    phi   = numbers.c;
+    if( rho &lt; 0 ){ rho = rho*(-1); }
 
-    if rho != 0:
-        phi_radians = radians( phi )
-        z     = rho * cos( phi_radians )
-        radio = rho * sin( phi_radians )
 
-    return {
-        &quot;radio&quot;: radio,
-        &quot;theta&quot;: theta,
-        &quot;z&quot;    :     z,
+    // console.log( {rho, phi, theta} );
+    let radio = 0;
+    let z     = 0;
+    if(  rho != 0  ){
+        let phiRad = angleToRadians( phi );
+        z     = rho * Math.cos( phiRad );
+        radio = rho * Math.sin( phiRad );
+        console.log( `${z}* tan(${phi})` );
     }
+
+    return { radio, theta, z  };
+}
 </code></pre>
-<p>-De Esféricas a Cartesianas:</p>
-<pre><code class="language-python">def spherical_to_cartesian3d( rho=float(), theta=float(), phi=float() ) -&gt; dict: 
-    cylindrical = spherical_to_cylindrical( rho, theta, phi )
-    cartesian   = cylindrical_to_cartesian3d(  
-        cylindrical[&quot;radio&quot;],
-        cylindrical[&quot;theta&quot;],
-        cylindrical[&quot;z&quot;    ],
-    )
-    return {
-        &quot;x&quot;: cartesian[&quot;x&quot;],
-        &quot;y&quot;: cartesian[&quot;y&quot;],
-        &quot;z&quot;: cartesian[&quot;z&quot;],
-    }
+<pre><code class="language-js">function sphericalToCartesian3d( rho=0, theta=0, phi=0 ){
+    let cylindrical = sphericalToCylindrical( rho, theta, phi );
+    let cartesian   = cylindricalToCartesian3d( cylindrical.radio, cylindrical.theta, cylindrical.z );
+    return { x: cartesian.x, y: cartesian.y, z: cartesian.z };
+}
 </code></pre>
+<p>El miniproyecto con interfaz en navegador lo puede encontrar en <a href="https://luisalvarado3.github.io/spatial_coordinate_converter/">Conversor de coordenadas espaciales</a> con el cual ocupé los modulos mostrados en esta guía.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../cap1/4_algoritmo.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../cap1/5_python.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../cap1/6_js.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../cap2/0_cap2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -292,11 +298,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../cap1/4_algoritmo.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../cap1/5_python.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../cap1/6_js.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../cap2/0_cap2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

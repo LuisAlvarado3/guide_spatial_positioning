@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduccion.html"><strong aria-hidden="true">1.</strong> Introducción                             </a></li><li class="chapter-item expanded "><a href="../cap1/0_cap1.html"><strong aria-hidden="true">2.</strong> Capitulo 1                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap1/1_sis_ref.html"><strong aria-hidden="true">2.1.</strong> Sistema de Referencia                </a></li><li class="chapter-item expanded "><a href="../cap1/2_prim_s_ref.html"><strong aria-hidden="true">2.2.</strong> Primitivas de sistemas de referencia </a></li><li class="chapter-item expanded "><a href="../cap1/3_conv_sis_ref.html" class="active"><strong aria-hidden="true">2.3.</strong> Conversión de sistema de referencia  </a></li><li class="chapter-item expanded "><a href="../cap1/4_algoritmo.html"><strong aria-hidden="true">2.4.</strong> Algoritmo                            </a></li><li class="chapter-item expanded "><a href="../cap1/5_python.html"><strong aria-hidden="true">2.5.</strong> Implementación en Python             </a></li></ol></li><li class="chapter-item expanded "><a href="../cap2/0_cap2.html"><strong aria-hidden="true">3.</strong> Capítulo 2                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap2/1_traslacion.html"><strong aria-hidden="true">3.1.</strong> Traslación                           </a></li></ol></li><li class="chapter-item expanded "><a href="../cap3/0_cap3.html"><strong aria-hidden="true">4.</strong> Capítulo 3                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap3/1_rotacion.html"><strong aria-hidden="true">4.1.</strong> Rotación                             </a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduccion.html"><strong aria-hidden="true">1.</strong> Introducción                             </a></li><li class="chapter-item expanded "><a href="../cap1/0_cap1.html"><strong aria-hidden="true">2.</strong> Capitulo 1                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap1/1_sis_ref.html"><strong aria-hidden="true">2.1.</strong> Sistema de Referencia                </a></li><li class="chapter-item expanded "><a href="../cap1/2_prim_s_ref.html"><strong aria-hidden="true">2.2.</strong> Primitivas de sistemas de referencia </a></li><li class="chapter-item expanded "><a href="../cap1/3_conv_sis_ref.html" class="active"><strong aria-hidden="true">2.3.</strong> Conversión de sistema de referencia  </a></li><li class="chapter-item expanded "><a href="../cap1/4_algoritmo.html"><strong aria-hidden="true">2.4.</strong> Algoritmo                            </a></li><li class="chapter-item expanded "><a href="../cap1/5_python.html"><strong aria-hidden="true">2.5.</strong> Implementación en Python             </a></li><li class="chapter-item expanded "><a href="../cap1/6_js.html"><strong aria-hidden="true">2.6.</strong> Implementación en JavaScript         </a></li></ol></li><li class="chapter-item expanded "><a href="../cap2/0_cap2.html"><strong aria-hidden="true">3.</strong> Capítulo 2                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap2/1_traslacion.html"><strong aria-hidden="true">3.1.</strong> Traslación                           </a></li></ol></li><li class="chapter-item expanded "><a href="../cap3/0_cap3.html"><strong aria-hidden="true">4.</strong> Capítulo 3                               </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap3/1_rotacion.html"><strong aria-hidden="true">4.1.</strong> Rotación                             </a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -149,6 +149,41 @@
 <blockquote>
 <p>Nota: Puedes tener un exceso de información con respecto de un sistema \(\mathbb{R}^2\) que es convertido a un sistema \(\mathbb{R}^3\), sin embargo es importante saber que ocurre lo contrario de un sistema de \(\mathbb{R}^3\) hacia un sistema \(\mathbb{R}^2\) en tal caso puede que los datos no sean recuperados a como eran en un principio y es mejor tratar este tipo de conversión con cautela.</p>
 </blockquote>
+<blockquote>
+<p><strong>Dominio del ángulo a través de la función tangente</strong>: <br />
+Para cualquier ángulo obtenido mediante la <strong>tangente</strong> es posible que se tenga que apegar a ciertas condiciones para obtener el valor deseado, no solo basta con enviar la instrucción matemática en la calculadora, sino que requiere de ciertas nociones para determinar el ángulo en la dirección correcta. Para cualquier ángulo descrito en el plano cartesiano, recordar que la función <strong>tangente</strong> funciona en realción a los lados de un triángulo rectángulo, por lo que es importante identificar el dominio en el que se encuentra el tríangulo rectangulo en el plano cartesiano. <br />
+<img src="../imgs/quadrants.jpg" alt="" /> <br />
+En la imagen de arriba se ha dividido el plano cartesiano en 4 secciones a las que se les denomina cuadrantes y se enumeran en números (de preferencia) romanos y sentido antihorario, además de ello se han colocado 4 triángulos indicando el sentido en el que se describen los valores de sus ángulos.
+La función que expresa la relación del ángulo con respecto de los catetos opuestos y adyacentes es:
+$$
+\tan{\alpha} = \frac{opuesto}{adyacente}
+$$
+Y la expresión para obtener el ángulo es:
+$$
+\alpha = \arctan{\frac{opuesto}{adyacente}}
+$$
+La igualdad se cumple siempre que el cateto adyacente sea distinto de cero por lo cual, la primera norma válida para la función es: <br />
+I. Para \(adyacente \neq 0\) entonces \(\alpha\) existe, de otra forma \(\alpha\) no está definido. <br />
+Si tanto el <strong>cateto opuesto</strong> como el <strong>adyacente</strong> son iguales a cero, entonces eso quiere decír que no hay un ángulo, por lo que, <br />
+II. Si \(x,y = 0\) entonces \(\alpha = 0°\). <br />
+Si <strong>cateto adyacente</strong> es mayor a cero y <strong>cateto opuesto</strong> es igual a cero entonces el ángulo es igual a cero. Caso inverso sucede que \(\alpha\) es un ángulo recto. <br />
+III. Si \(adyacente&gt;0\) y \(opuesto=0\) entonces \(\alpha=0°\). <br />
+IV. Si \(opuesto&gt;0\) y \(adyacente=0\) eontonces \(\alpha=90°\). <br />
+Los siguientes casos indican que se debe hacer en caso de que los catetos sean menores a cero. <br />
+V. Si \(adyacente&lt;0\) pero \(opuesto\) es positivo, entonces se encuentra en el segundo cuadrante del plano y el ángulo resultante es horario, entonces para el ángulo \(\alpha\):
+$$
+\alpha = 180 + \arctan{ \frac{opuesto}{adyacente} }
+$$
+VI. Si \(adyacente, opuesto&lt; 0\) entonces el ángulo se encuentra en el tercer cuadrante y el ángulo es antihorario:
+$$
+\alpha = 270 - \arctan{ \frac{opuesto}{adyacente} }
+$$
+VII. Si \(opuesto&lt;0\) pero \(adyacente\) es positivo, entonces se encuentra en el cuarto cuadrante del plano y el ángulo resultante es horario, entonces para el ángulo \(\alpha\):
+$$
+\alpha = 360 + \arctan{ \frac{opuesto}{adyacente} }
+$$
+Estas propociciones se utilizarán en la sección <a href="4_algoritmo.html">Algorítmo</a> y posteriores.</p>
+</blockquote>
 <h2 id="sistemas-bidimensionales"><a class="header" href="#sistemas-bidimensionales">Sistemas Bidimensionales.</a></h2>
 <h3 id="coordenadas-cartesianas-polares"><a class="header" href="#coordenadas-cartesianas-polares">Coordenadas Cartesianas-Polares.</a></h3>
 <p>Para una coordenada cartesiana, se verifican los valores para las dos componenetes  en el punto \(p\) donde sus compoenetes son \((x,y)\), y están dadas por por las siguientes ecuaciones:
@@ -160,22 +195,22 @@ y = r *\sin{\theta}
 $$
 De forma relevante se puede expresar en terminos para cualquiera de las dos ecuaciones anteriores que:
 $$
-\frac{x}{r} = \cos{\theta}
+\frac{x}{r} = \cos{\theta}\\
+\frac{y}{r} = \sin{\theta}
+$$ o bien que,
 $$
-o bien que,
+\frac{y}{x} = \tan{\theta}
 $$
-\frac{r}{x} = \sin{\theta}
-$$
-Para encontrar el <strong>radio polar</strong> \(\vec{r}\) es necesario convertir nuestro par de componentes \((x,y)\) a nuevo vector utilizando el <strong>teorema de pitágoras</strong>, el cual nos dice que, sea un triángulo rectángulo, la suma de dos de sus lados cada una al cuadrado es igual a la suma del tercero al cuadrado:
+Para encontrar el <strong>radio polar</strong> \(\vec{r}\) es necesario convertir nuestro par de componentes \((x,y)\) a nuevo vector utilizando el <strong>teorema de pitágoras</strong>, el cual nos dice que, sea un triángulo rectángulo, la suma de dos de sus lados cada una al cuadrado es igual al tercero al cuadrado:
 $$
 c^2 = a^2+b^2
 $$
-Dado que \(x\) y \(y\) son los lados perpendiculares, entonces, asumiremos la siguiente igualdad:
+Dado que \(x\) y \(y\) representan los catetos para la <strong>coordenada</strong>, entonces asumiremos la siguiente igualdad:
 $$
 a=x\\
 b=y
 $$
-Mientras que el lado <strong>adyacente</strong> es equivalente al escalar \(r\) del vector como,
+Mientras que el lado <strong>adyacente</strong> es equivalente al escalar \(r\) del vector, tal como:
 $$
 ||\vec{r}|| = c = r
 $$
@@ -189,20 +224,23 @@ $$</p>
 <p>$$
 ||\vec{r}||= \sqrt{x^2+y^2}
 $$
-Para obtener el <strong>ángulo polar</strong> despejamos cualquiera de las primeras ecuaciones,
+Para obtener el <strong>ángulo polar</strong> despejamos cualquiera de las primeras ecuaciones, a tal modo que el ángulo queda representado por su forma <strong>tangencial</strong> como:
 $$
-\frac{x}{r} = \cos{\theta}\\
-\Rightarrow \theta = \cos^{-1}{(\frac{x}{r})} = \cos{(\frac{r}{x})}\\
-\Rightarrow \theta = \cos{(\frac{ \sqrt{x^2+y^2} }{x})}
-$$ 
-Por lo tanto la expresión de conversión para obtener las <strong>coordenadas polares</strong> con respecto a <strong>coordenadas cartesianas</strong> es,
+\frac{y}{x} = \tan{\theta}\\
+\Rightarrow \theta = \tan^{-1}{(\frac{y}{x})} = \arctan{(\frac{y}{x})}\\
+\Rightarrow \theta = \arctan{(\frac{y}{x})}
+$$</p>
+<blockquote>
+<p><strong>Nota</strong>: De acuerdo al apartado <strong>Dominio del ángulo a través de la función tangente</strong> el ángulo \(\theta\) debe cumplír con ciertas condiciones, principalmente porque en el momento de computar esta operación pueden ocurrir errores o simplemente no obtener el resultado esperado, por lo tanto, para las siguientes definiciones asumiremos <em>cada vez que se calcule algún ángulo con respecto de su función <strong>tangente</strong> o <strong>inversa</strong> que será relativamente certera</em>. </p>
+</blockquote>
+<p>despejando la expresión de conversión para obtener las <strong>coordenadas polares</strong> con respecto a <strong>coordenadas cartesianas</strong> es,
 $$
 \vec{r} = \cases{
 r = \sqrt{x^2+y^2}\\
-\theta = \cos{(\frac{ \sqrt{x^2+y^2} }{x})}
+\theta = \arctan{(\frac{y}{x})}
 }
-$$
-Mientras que para pasar de un sistema de <strong>coordenadas polares</strong> a <strong>coordenadas rectangulares</strong> se refleja como,
+$$</p>
+<p>Por tanto, conseguir el sistema de conversion de un sistema de <strong>coordenadas polares</strong> a <strong>coordenadas rectangulares</strong> se refleja como,
 $$
 p = \cases{
 x = r *\cos{\theta}\\
@@ -215,7 +253,7 @@ $$</p>
 $$
 \vec{r} = \cases{
 r = \sqrt{x^2+y^2}\\
-\theta = \cos{(\frac{ \sqrt{x^2+y^2} }{x})}\\
+\theta = \arctan{ (\frac{x}{y}) }\\
 z = z
 }<br />
 $$
@@ -241,23 +279,18 @@ $$</p>
 <p>Para obtener a \(\phi\) simplemente despejando a \(z\),
 $$
 \cos{\phi} = \frac{z}{\rho} = \frac{z}{\sqrt{ x^2 + y^2 + z^2}}\\
-\Rightarrow \phi = \cos^{-1}{ (\frac{z}{\sqrt{ x^2 + y^2 + z^2}}) } = \cos{ (\frac{\sqrt{ x^2 + y^2 + z^2}}{z}) }\\
-\therefore \phi = \cos{ (\frac{\sqrt{ x^2 + y^2 + z^2}}{z}) }
+\Rightarrow \phi = \arccos{ (\frac{z}{\sqrt{ x^2 + y^2 + z^2}}) }
 $$
-Para la componenete \(\theta\) de igual manera podemos despejar cualquiera de las primeras ecuaciones,
+Para la componenete \(\theta\) de igual manera podemos a partir de la relación que existe entre \(x\) y \(y\) tomar la siguiente ecuación,
 $$
-x = \rho \sin{\phi} \cos{\theta}\\
-\Rightarrow \frac{x}{\rho \sin{\phi}} =  \cos{\theta}\\
-\Rightarrow \theta = \cos^{-1}{( \frac{x}{\rho \sin{\phi}} )} = \cos{( \frac{\rho \sin{\phi}}{x} )}\\
-\theta = \cos{( \frac{\rho \sin{ (\cos{ (\frac{\sqrt{ x^2 + y^2 + z^2}}{z}) }) }}{x} )} = \cos{( \frac{\sqrt{ x^2 + y^2 + z^2} * \sin{ (\cos{ (\frac{\sqrt{ x^2 + y^2 + z^2}}{z}) }) }}{x} )}\\
-\therefore \theta = \cos{( \frac{\sqrt{ x^2 + y^2 + z^2} * \sin{ (\cos{ (\frac{\sqrt{ x^2 + y^2 + z^2}}{z}) }) }}{x} )}
+\theta = \arctan{ (\frac{x}{y}) }
 $$
 Entonces, la forma de expresar <strong>coordenadas esféricas</strong> mediante su forma <strong>rectangular</strong> es,
 $$
 p_{esférica} = \cases{
 \rho = \sqrt{ x^2 + y^2 + z^2}\\
-\phi = \cos{ (\frac{\sqrt{ x^2 + y^2 + z^2}}{z}) }\\
-\theta = \cos{( \frac{\sqrt{ x^2 + y^2 + z^2} * \sin{ (\cos{ (\frac{\sqrt{ x^2 + y^2 + z^2}}{z}) }) }}{x} )}
+\phi = \arccos{ (\frac{z}{\sqrt{ x^2 + y^2 + z^2}}) }\\
+\theta = \arctan{ (\frac{x}{y}) }
 }
 $$
 Mientras que, para expresar <strong>coordenadas cartesianas</strong> mediante su forma <strong>esférica</strong> se define como,
@@ -300,53 +333,72 @@ $$</p>
 $$
 p_{esférica} = \cases{
 \rho = \sqrt{ r^2 + z^2 } \\
-\phi = \cos(\frac{\sqrt{ r^2 + z^2 }}{z}) \\
+\phi = \arccos{ (\frac{z}{\sqrt{ r^2 + z^2}}) } \\
 \theta = \theta
 }
 $$</p>
-<h2 id="sistemas-mixtos"><a class="header" href="#sistemas-mixtos">Sistemas Mixtos.</a></h2>
-<p>Como mencioné al principio de este capítulo, traspasar un sistema \(\mathbb{R}^3\) a uno de \(\mathbb{R}^2\) puede no ser conveniente debido a la pérdida de información que este conlleva, sin embargo es posible descomponer un sistema de tres diemensiones en sistemas más simples. Está sección tiene el propósito de explicar como hacer esta conversión de sistemas.</p>
-<h3 id="sistemas-de-mathbbr2-a-mathbbr3"><a class="header" href="#sistemas-de-mathbbr2-a-mathbbr3">Sistemas de \(\mathbb{R}^2\) a \(\mathbb{R}^3\).</a></h3>
-<h4 id="cartesiano-mathbbr2---mathbbr3"><a class="header" href="#cartesiano-mathbbr2---mathbbr3">Cartesiano \(\mathbb{R}^2\) - \(\mathbb{R}^3\)</a></h4>
-<p>Suponga un punto \(p_{2}(x,y)\) donde para cada punto se tiene,
+<!-- ## Sistemas Mixtos.
+Como mencioné al principio de este capítulo, traspasar un sistema \\(\mathbb{R}^3\\) a uno de \\(\mathbb{R}^2\\) puede no ser conveniente debido a la pérdida de información que este conlleva, sin embargo es posible descomponer un sistema de tres diemensiones en sistemas más simples. Está sección tiene el propósito de explicar como hacer esta conversión de sistemas.
+
+### Sistemas de \\(\mathbb{R}^2\\) a \\(\mathbb{R}^3\\).
+#### Cartesiano \\(\mathbb{R}^2\\) - \\(\mathbb{R}^3\\)
+Suponga un punto \\(p_{2}(x,y)\\) donde para cada punto se tiene,
 $$
-x = a\\
-y = b\\
+    x = a\\\\
+    y = b\\\\
 $$
-sean \(a\) y \(b\) cualquier valor perteneciente a los \(\mathbb{R}\).</p>
-<p>Para un sistema de 3 dimensiones consideraremos que \(z\) se inicializa en el origen es decir, \(0\).
+sean \\(a\\) y \\(b\\) cualquier valor perteneciente a los \\(\mathbb{R}\\).
+Para un sistema de 3 dimensiones consideraremos que \\(z\\) se inicializa en el origen es decir, \\(0\\).
+
 $$
-p_{3} = \cases{
-x = a\\
-y = b\\
-z = 0
-}
-$$</p>
-<h4 id="cartesiano-mathbbr2---cilíndrico"><a class="header" href="#cartesiano-mathbbr2---cilíndrico">Cartesiano \(\mathbb{R}^2\) - Cilíndrico.</a></h4>
-<p>Considerese un punto \(p_2\) descrito por \((x,y)\) representado en coordenadas cilíndricas por el vector \( \vec{r}(r, \theta, z) \):
+    p_{3} = \cases{
+        x = a\\\\
+        y = b\\\\
+        z = 0
+    }
 $$
-\vec{r} = \cases{
-r = \sqrt{x^2 + y^2}\\
-\theta = \cos{(\frac{ \sqrt{x^2+y^2} }{x})}\\
-z = 0
-}
-$$</p>
-<h4 id="cartesiano-mathbbr2---esférico"><a class="header" href="#cartesiano-mathbbr2---esférico">Cartesiano \(\mathbb{R}^2\) - Esférico.</a></h4>
-<p>Sea \(p_2(x,y)\) en términos esféricos de \( p_{esférica}(\rho, \phi, \theta)\), de acuerdo al caso cartesiano en que \(z=0\), obtenemos lo siguiente:
+
+#### Cartesiano \\(\mathbb{R}^2\\) - Cilíndrico.
+Considerese un punto \\(p_2\\) descrito por \\((x,y)\\) representado en coordenadas cilíndricas por el vector \\( \vec{r}(r, \theta, z) \\):
 $$
-\rho = \sqrt{ x^2 + y^2 + (0)^2}\\
-\phi = \cos{ (\frac{\sqrt{ x^2 + y^2 + (0)^2}}{(0)}) }\\
-\theta = \cos{( \frac{\sqrt{ x^2 + y^2 + (0)^2} * \sin{ (\cos{ (\frac{\sqrt{ x^2 + y^2 + (0)^2}}{(0)}) }) }}{x} )}
+    \vec{r} = \cases{
+        r = \sqrt{x^2 + y^2}\\\\
+        \theta = \cos{(\frac{ \sqrt{x^2+y^2} }{x})}\\\\
+        z = 0
+    }
+$$
+
+#### Cartesiano \\(\mathbb{R}^2\\) - Esférico.
+Sea \\(p_2(x,y)\\) en términos esféricos de \\( p_{esférica}(\rho, \phi, \theta)\\), de acuerdo al caso cartesiano en que \\(z=0\\), obtenemos lo siguiente:
+$$
+    \rho = \sqrt{ x^2 + y^2 + (0)^2}\\\\
+    \phi = 0\\\\
+    \theta = \cos{(\frac{ \sqrt{x^2+y^2} }{x})}
 $$
 Simplificando,
 $$
-\rho = \sqrt{ x^2 + y^2}\\
-\phi = \cos{ (\frac{\sqrt{ x^2 + y^2 }}{(0)}) }\\
-\theta = \cos{( 
-\frac{ \sqrt{ x^2 + y^2} }{x} 
-)}
-$$</p>
-<h3 id="sistemas-de-mathbbr3-a-mathbbr2-sin-sufrir-pérdidas-de-información"><a class="header" href="#sistemas-de-mathbbr3-a-mathbbr2-sin-sufrir-pérdidas-de-información">Sistemas de \(\mathbb{R}^3\) a \(\mathbb{R}^2\) sin sufrir pérdidas de información.</a></h3>
+    \rho = \sqrt{ x^2 + y^2}\\\\
+    \phi = 0\\\\
+    \theta = \cos{( 
+        \frac{ \sqrt{ x^2 + y^2} }{x} 
+    )}
+$$
+Por tanto,
+$$
+    p_{esférico } = \cases{
+        \rho = \sqrt{ x^2 + y^2}\\\\
+        \phi = 0\\\\
+        \theta = \cos{( 
+            \frac{ \sqrt{ x^2 + y^2} }{x} 
+        )}
+    }
+$$
+
+#### Sistema Polar a Cartesiano \\(\mathbb{R}^3\\)
+Suponga el caso de la coordenada polar \\(\vec{r}(r, \theta)\\) hacia un sistema cartesiano en el espacio
+
+
+### Sistemas de \\(\mathbb{R}^3\\) a \\(\mathbb{R}^2\\) sin sufrir pérdidas de información. -->
 
                     </main>
 
